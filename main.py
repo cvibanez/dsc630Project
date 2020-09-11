@@ -17,6 +17,8 @@ def print_function():
 def main():
     
     print_function()
+    print('This is a sample python file.')
+    print('Torrey code')
  
 if __name__ == '__main__':
     main()
