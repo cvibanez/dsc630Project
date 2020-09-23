@@ -1,23 +1,19 @@
-# Conrad Ibanez
-# DSC540 Spring 2020
-# Weeks 3 and 4 Exercises
-
+# DSC630 Fall 2020 - Term Project
+# Team: Torrey Capobianco, Conrad Ibanez , Edris Safari 
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import group3lib as g3lib
 
-
-def print_function():
-    
-    print('in print function')
-    
-    
+# Set the random seed
+np.random.seed(3)   
 
 def main():
     
-    print_function()
-    print('This is a sample python file.')
+    marketing_data_df = g3lib.read_file()
+    print(marketing_data_df.head())
+    g3lib.create_scatterplots(marketing_data_df)
  
 if __name__ == '__main__':
     main()
