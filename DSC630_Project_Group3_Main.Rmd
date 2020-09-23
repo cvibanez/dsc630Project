@@ -35,6 +35,7 @@ use_python(path_to_python)
 #install.packages("QuantPsyc", repos = "http://cran.us.r-project.org")
 #install.packages("car", repos = "http://cran.us.r-project.org")
 #install.packages("reticulate", repos = "http://cran.us.r-project.org")
+install.packages("fastDummies", repos = "http://cran.us.r-project.org")
 # Load the packages
 library(ggplot2)
 library(pastecs)
@@ -53,6 +54,7 @@ library(mlogit)
 library(dplyr)
 library(caret)
 library(regclass)
+library(fastDummies)
 
 
 #Set working directory
@@ -69,6 +71,14 @@ str(marketing_df )
 no_purchases <- marketing_df[ which(marketing_df$AmountSpent <= 0), ]
 str(no_purchases)
 
+
+DirectMarketing <- marketing_df
+
+DirectMarketing1 <- dummy_cols(DirectMarketing,select_columns =c('Age','Gender','OwnHome','Married','Location','History') ,remove_selected_columns = TRUE)
+
+ 
+
+head(DirectMarketing1)
 
 
 ```
