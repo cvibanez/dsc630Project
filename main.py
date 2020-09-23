@@ -14,6 +14,9 @@ def main():
     marketing_data_df = g3lib.read_file()
     print(marketing_data_df.head())
     g3lib.create_scatterplots(marketing_data_df)
+    print_function()
+    print('This is a sample python file.')
+    print('Torrey code')
  
 if __name__ == '__main__':
     main()
