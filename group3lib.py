@@ -35,6 +35,7 @@ def create_scatterplots(data):
     plt.show();
 
 
+
 def get_clean_df_labels(df):
     """Function takes original dataframe and returns cleaned data with labels.
     Dataframe will encode categorical variables, normalize data, and bin the amount spent into low, medium, and high
@@ -111,4 +112,6 @@ def get_clean_df_labels(df):
     DirectMarketing_Cln_Labels = pd.concat([DirectMarketingScaled, Spend_labels], axis=1)
 
     return DirectMarketing_Cln_Labels
+
+=======
 
