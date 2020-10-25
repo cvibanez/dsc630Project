@@ -2,10 +2,11 @@
 title: "CourseProject_DataPreparation"
 author: "edris safari"
 date: "9/21/2020"
-output: 
-  html_document: default
+output:
+  pdf_document: default
   word_document: default
-always_allow_html: true  
+  html_document: default
+always_allow_html: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -185,7 +186,7 @@ sprintf('MinQ: %s , FirstQ %s, MedQ %s, ThirdQ %s, MaxQ %s' , MinQ,FirstQ,MedQ,T
 ```{r }
 
 DirectMarketing <- mutate(DirectMarketing, Amt_Spnt_Class = ifelse(AmountSpent >= MinQ & AmountSpent <= MedQ,'Low',
-                                                                    ifelse(AmountSpent > MinQ & AmountSpent <= ThirdQ,'Med',
+                                                                    ifelse(AmountSpent > MedQ & AmountSpent <= ThirdQ,'Med',
                                                                     ifelse(AmountSpent > ThirdQ & AmountSpent <= MaxQ,'High','NA'))))
 
 # Drop AmountSpent
@@ -229,10 +230,6 @@ DirectMarketing
 
 
 
-```{r write to clean file}
-write.csv(DirectMarketing, file = "data/DirectMarketing_Cln_Cluster.csv", row.names=FALSE)
-
-```
 
 
 ```{r Create high/low category for amount spent}
@@ -251,11 +248,17 @@ sprintf('MinQ: %s , FirstQ %s, MedQ %s, ThirdQ %s, MaxQ %s' , MinQ,FirstQ,MedQ,T
 ```{r }
 
 DirectMarketing <- mutate(DirectMarketing, Amt_Spnt_Class = ifelse(AmountSpent >= MinQ & AmountSpent <= MedQ,0,
-                                                                    ifelse(AmountSpent > MinQ & AmountSpent <= ThirdQ,1,
+                                                                    ifelse(AmountSpent > MedQ & AmountSpent <= ThirdQ,1,
                                                                     ifelse(AmountSpent > ThirdQ & AmountSpent <= MaxQ,2,'NA'))))
 
 # Drop AmountSpent
 drops <- c("AmountSpent")
 
 DirectMarketing
+```
+
+
+```{r write to clean file}
+write.csv(DirectMarketing, file = "data/DirectMarketing_Cln_Cluster.csv", row.names=FALSE)
+
 ```
