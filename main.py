@@ -11,12 +11,15 @@ np.random.seed(3)
 
 def main():
     
-    marketing_data_df = g3lib.read_file()
+    marketing_data_df = g3lib.read_file2()
     print(marketing_data_df.head())
     g3lib.create_scatterplots(marketing_data_df)
-    print_function()
-    print('This is a sample python file.')
-    print('Torrey code')
+    
+    g3lib.createStatisticsHeatmap(marketing_data_df)
+    
+    g3lib.evaluate_kmeans(marketing_data_df)
+    
+    #g3lib.perform_reduction_analysis(marketing_data_df)
  
 if __name__ == '__main__':
     main()
